@@ -2,6 +2,7 @@
 import { use, useState } from 'react'
 import { requests } from '../assets/constants'
 import Image from 'next/image'
+import Link from 'next/link'
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md'
 import { leftSlider, rightSlider } from '../assets/constants'
 
@@ -40,14 +41,17 @@ const UpcomingMovies = () => {
               {
                 movies.map((movie, index) => (
                   <div className=" hover:bg-gray-300/30 border px-6 pt-6 active:bg-gray-300/50 hover:border hover:border-gray-500/30 cursor-pointer rounded-lg" key={index}>
-                    <div className="flex flex-col rounded-lg w-40 group relative">
-                        <img 
-                          src={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`} 
-                          className="object-cover w-40 rounded-lg h-[220px] alt={item?.title} "
-                        />
-                      <h1 className="text-black font-semibold mt-3 ">{movie?.original_title}</h1>
-                      <h4 className="text-gray-500 text-sm pt-[1px]">Debut: {movie?.release_date}</h4>
-                    </div>
+                     <Link href={`/movies/${movie.id}`}>
+                      <div className="flex flex-col rounded-lg w-40 group relative">
+                          <img 
+                            src={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`} 
+                            className="object-cover w-40 rounded-lg h-[220px] alt={item?.title} "
+                          />
+                        <h1 className="text-black font-semibold mt-3 ">{movie?.original_title}</h1>
+                        <h4 className="text-gray-500 text-sm pt-[1px]">Debut: {movie?.release_date}</h4>
+                        <h4 className="text-gray-500 text-sm pt-[1px] ">Fan Votes: {movie?.vote_count}</h4>
+                      </div>
+                    </Link>
                   </div>
                 ))
               }

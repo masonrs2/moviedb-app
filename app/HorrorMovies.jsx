@@ -40,7 +40,7 @@ const PopularMovies = () => {
                           />
                       <h1 className="text-black font-semibold mt-3 ">{movie?.original_title}</h1>
                       <h4 className="text-gray-500 text-sm pt-[1px]">Debut: {movie?.release_date}</h4>
-                      <h4 className="text-gray-500 text-sm pt-[1px] ">Rating: {movie?.vote_count}</h4>
+                      <h4 className="text-gray-500 text-sm pt-[1px] ">Fan Votes: {movie?.vote_count}</h4>
                     </div>
                   </div>
                 ))

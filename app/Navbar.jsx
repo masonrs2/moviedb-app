@@ -12,7 +12,7 @@ const Navbar = () => {
     
     return (
         <div className="shadow-xl flex flex-col bg-blue-900">
-            <div className="p-4 px-10 xl:px-32 l py-5 flex justify-between items-center border-b-2 border-gray-300/80 border-dotted ">
+            <div className="p-4 px-10 xl:px-32 l py-5 flex justify-between items-center">
                 
                 <div className="flex ">     
                     <div className="flex items-center gap-2">

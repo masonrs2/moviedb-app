@@ -55,7 +55,7 @@ const MovieCast =  ({ movie }) => {
                     ))
                   }
               </div>
-                  <MdChevronRight onClick={() => rightSlider(movieRow)} className="bg-black top-[29%] right-20 rounded-full absolute opacity-50 hover:opacity-75 active:opacity-100 cursor-pointer z-10" size={40} />
+                  <MdChevronRight onClick={rightSlider} className="bg-black top-[29%] right-20 rounded-full absolute opacity-50 hover:opacity-75 active:opacity-100 cursor-pointer z-10" size={40} />
            </div>
         </div>
       )

@@ -34,18 +34,18 @@ const UpcomingMovies = () => {
 
           <div className="flex">
 
-            <MdChevronLeft onClick={leftSlider} className="bg-black left-[-50px] top-[1130px] rounded-full mr-1 xl:ml-32 absolute opacity-50 hover:opacity-75 active:opacity-100 cursor-pointer z-10" size={40} />
           </div>
 
           <div id={'slider' + movieRow} className="flex gap-4 relative w-full overflow-x-scroll scroll-smooth scrollbar-hide group ">
               {
                 movies.map((movie, index) => (
-                  <div className=" hover:bg-gray-300/30 border px-6 pt-6 active:bg-gray-300/50 hover:border hover:border-gray-500/30 cursor-pointer rounded-lg" key={index}>
+                  <div key={index} className=" hover:bg-gray-300/30 border px-6 pt-6 active:bg-gray-300/50 hover:border hover:border-gray-500/30 cursor-pointer rounded-lg">
                      <Link href={`/movies/${movie.id}`}>
                       <div className="flex flex-col rounded-lg w-40 group relative">
                           <img 
                             src={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`} 
-                            className="object-cover w-40 rounded-lg h-[220px] alt={item?.title} "
+                            className="object-cover w-40 rounded-lg h-[220px] alt={item?.title}"
+                            alt={movie?.title}
                           />
                         <h1 className="text-black font-semibold mt-3 ">{movie?.original_title}</h1>
                         <h4 className="text-gray-500 text-sm pt-[1px]">Debut: {movie?.release_date}</h4>
@@ -56,7 +56,7 @@ const UpcomingMovies = () => {
                 ))
               }
           </div>
-              <MdChevronRight onClick={rightSlider} className="bg-black top-[29%] right-20 rounded-full absolute opacity-50 hover:opacity-75 active:opacity-100 cursor-pointer z-10" size={40} />
+            
        </div>
       
     </div>

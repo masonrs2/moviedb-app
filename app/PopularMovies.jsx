@@ -1,9 +1,10 @@
 "use client"
 import { use, useState } from 'react'
-import { requests, leftSlider, rightSlider } from '../assets/constants'
+import { requests} from '../assets/constants'
 import {MdChevronLeft, MdChevronRight} from 'react-icons/md'
 import Image from 'next/image'
 import Link from 'next/link'
+import { AiOutlineStar, AiFillStar } from 'react-icons/ai'
 
 async function fetchPopularMovies() {
 
@@ -24,6 +25,16 @@ const PopularMovies = () => {
   const [movieRow, setMovieRow] = useState("1")
   const movies =  use(dataPromise)
 
+  const leftSlider = (movieRow) => {
+    var slider = document.getElementById('slider' + 1)
+    slider = slider.scrollLeft -= 500
+}
+
+  const rightSlider = (movieRow) => {
+    var slider = document.getElementById('slider' + 1)
+    slider = slider.scrollLeft += 500
+}
+
   return (
     <div className=" px-10 xl:px-32 pt-8 pb-4">
        <div className="flex flex-col">
@@ -31,21 +42,22 @@ const PopularMovies = () => {
               Top Rated Movies
           </h1>
 
-          <div className="flex">
-
-            <MdChevronLeft onClick={leftSlider} className="bg-black left-[-50px] rounded-full mr-1 xl:ml-32 top-[29%] absolute opacity-50 hover:opacity-75 active:opacity-100 cursor-pointer z-10" size={40} />
-          </div>
-
-          <div id={'slider'} className="flex gap-4 relative w-full overflow-x-scroll scroll-smooth scrollbar-hide group ">
+          <div id={'slider1'} className="flex gap-4 relative w-full overflow-x-scroll scroll-smooth scrollbar-hide group ">
               {
                 movies.map((movie, index) => (
-                  <div className="hover:bg-gray-300/30 hover:border border px-6 pt-6 active:bg-gray-300/50 hover:border-gray-500/30 cursor-pointer rounded-lg" key={index}>
+                  <div key={index} className="hover:bg-gray-300/30 hover:border border px-6 pt-6 active:bg-gray-300/50 hover:border-gray-500/30 cursor-pointer rounded-lg" >
                     <Link href={`/movies/${movie.id}`}>
                       <div className="flex flex-col rounded-lg w-40 group relative">
+                        <div>
+
                           <img 
                             src={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`} 
                             className="object-cover w-40 rounded-lg h-[220px] alt={item?.title} "
-                            />
+                            alt={movie?.title}
+                          />      
+                          
+                        </div>
+                            
                         <h1 className="text-black font-semibold mt-3 ">{movie?.original_title}</h1>
                         <h4 className="text-gray-500 text-sm pt-[1px]">Debut: {movie?.release_date}</h4>
                         <h4 className="text-gray-500 text-sm pt-[1px] ">Fan Votes: {movie?.vote_count}</h4>
@@ -55,7 +67,7 @@ const PopularMovies = () => {
                 ))
               }
           </div>
-              <MdChevronRight onClick={() => rightSlider(movieRow)} className="bg-black top-[29%] right-20 rounded-full absolute opacity-50 hover:opacity-75 active:opacity-100 cursor-pointer z-10" size={40} />
+
        </div>
     </div>
   )

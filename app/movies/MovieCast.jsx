@@ -32,20 +32,16 @@ const MovieCast =  ({ movie }) => {
                   Movie Cast
               </h1>
     
-              <div className="flex">
-    
-                <MdChevronLeft onClick={leftSlider} className="bg-black rounded-full mr-1 xl:ml-32 top-[29%] absolute opacity-50 hover:opacity-75 active:opacity-100 cursor-pointer z-10" size={40} />
-              </div>
-    
               <div id={'slider'} className="flex gap-4 relative w-full overflow-x-scroll scroll-smooth scrollbar-hide group ">
                   {
                     credits.map((credit, index) => (
-                      <div className="hover:bg-gray-300/30 hover:border border px-6 pt-6 active:bg-gray-300/50 hover:border-gray-500/30 cursor-pointer rounded-lg" key={index}>
+                      <div key={index} className="hover:bg-gray-300/30 hover:border border px-6 pt-6 active:bg-gray-300/50 hover:border-gray-500/30 cursor-pointer rounded-lg" >
                 
                           <div className="flex flex-col rounded-lg w-40 group relative">
                               <img 
                                 src={`https://image.tmdb.org/t/p/original/${credit?.profile_path}`} 
                                 className="object-cover w-40 rounded-lg h-[220px] alt={item?.title} "
+                                alt={movie?.title}
                                 />
                             <h2 className="text-black font-semibold mt-3 w-full justify-center items-center flex ">{credit?.name}</h2>
                             <h3 className="text-gray-600 text-xs font-semibold mt-3 w-full justify-center items-center flex ">{credit?.character}</h3>
@@ -55,7 +51,7 @@ const MovieCast =  ({ movie }) => {
                     ))
                   }
               </div>
-                  <MdChevronRight onClick={rightSlider} className="bg-black top-[29%] right-20 rounded-full absolute opacity-50 hover:opacity-75 active:opacity-100 cursor-pointer z-10" size={40} />
+                
            </div>
         </div>
       )

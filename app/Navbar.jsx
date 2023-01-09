@@ -1,15 +1,30 @@
 "use client"
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FaBars, FaWindowClose } from 'react-icons/fa'
 import { AiOutlineUser } from 'react-icons/ai'
 import NavLinks from './NavLinks'
 import Link from 'next/link'
-
+import supabase from '../utils/supabaseClient'
 
 const Navbar = () => {
     const [toggleNav, setToggleNav] = useState(false)
-    
+    const [isAuthenticated, setIsAuthenticated] = useState(false)
+    const [userId, setUserId] = useState()
+    useEffect(() => {
+        const getUser = async () => {
+            const user = await supabase.auth.getUser()
+            if(user) {
+                setIsAuthenticated(user)
+                const userId = user.data.user?.id
+                setUserId(userId)
+            }
+            console.log("user: ", user)
+        }
+
+        getUser()
+    },[userId])
+
     return (
         <div className="shadow-xl flex flex-col bg-blue-900">
             <div className="p-4 px-10 xl:px-32 l py-5 flex justify-between items-center">
@@ -31,12 +46,14 @@ const Navbar = () => {
                         <NavLinks />
                     </div>
         
-                    <div className="flex flex-row gap-3 pr-3">                      
-                            <button className="flex justify-center items-center gap-2 p-2 w-[105px text-gray-200 font-light "><AiOutlineUser size={23}  /> Sign In</button>
-                            <Link href="/pricing">
-                            <div className=" rounded-xl w-full bg-gradient-to-r p-[5px] from-emerald-300 to-teal-600">
-                                <button className="p-2 w-[105px]  font-light bg-blue-900 ">Join TMDB</button>
-                            </div>
+                    <div className="flex flex-row gap-3 pr-3">  
+                            <Link href={`/Login`} className="flex items-center">
+                                <button className="flex justify-center items-center gap-2 p-2 w-[105px text-gray-200 font-light "><AiOutlineUser size={23}  /> Sign In</button>
+                            </Link>                    
+                            <Link href="/Signup">
+                                <div className=" rounded-xl w-full bg-gradient-to-r p-[5px] from-emerald-300 to-teal-600">
+                                    <button className="p-2 w-[105px] text-gray-200 font-light bg-blue-900 ">Join TMDB</button>
+                                </div>
                             </Link>
                     </div>
             </div>

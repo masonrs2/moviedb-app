@@ -1,3 +1,4 @@
+
 import React from 'react'
 import SimilarMovies from '../SimilarMovies';
 import MovieCast from '../MovieCast';
@@ -32,7 +33,8 @@ const page = async ({ params }) => {
             <div className="absolute w-full h-[600px] bg-gradient-to-r from-black via-black/90 to-black/50"></div>
             <img 
                 className="w-full h-[600px] object-cover opacity-50" 
-                src={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`} alt={movie?.title}
+                src={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`} 
+                alt={movie?.title}
             />
 
             <div className="absolute w-full top-[20%] p-4 md:p-8 px-10 xl:px-32">
@@ -41,6 +43,7 @@ const page = async ({ params }) => {
                     <img    
                         src={`https://image.tmdb.org/t/p/original/${movie?.poster_path}`} 
                         className="w-76 h-[450px] object-cover rounded-lg bottom-10 relative " 
+                        alt={movie?.title}
                     />
 
                     <div className="flex flex-col relative bottom-5">
@@ -69,13 +72,15 @@ const page = async ({ params }) => {
                         </div>
                         <p className="text-gray-400 font-light italic text-lg my-1">{movie?.tagline}</p>
                         <div className="flex items-center gap-2">
-                            <div className="bg-gradient-to-r rounded-full from-emerald-300 via-black to-teal-600 w-[68px] h-[68px] items-center flex justify-center ">
-                            <div className="rounded-full w-16 h-16 font-bold items-center flex justify-center text-gray-500 bg-gray-900 rotate-[-17deg]">{movie?.vote_average?.toFixed(1)}/10</div>
+                            <div className="bg-gradient-to-r rounded-full from-emerald-300 via-black to-teal-600 w-[63px] h-[63px] items-center flex justify-center ">
+                            <div className="rounded-full w-14 h-14 font-bold items-center flex justify-center text-gray-500 bg-gray-900 rotate-[-17deg]">{movie?.vote_average?.toFixed(1)}/10</div>
                             </div>
                             <div className="flex-col text-gray-400 font-medium">
                                 <p>User</p>
                                 <p>Score</p>
                             </div>
+
+                           
                         </div>
                         <div className="flex flex-col gap-1 mt-1">
                             <h2 className="font-medium text-xl mb-[2px] mt-2">Overview</h2>

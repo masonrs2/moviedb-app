@@ -8,7 +8,7 @@ import JoinToday from './JoinToday'
 
 const HomePage = () => {
   return (
-    <div className=" shadow-inner shadow-lg">
+    <div className=" shadow-inner text-white shadow-lg">
       <PopularMovies />
       <HorrorMovies />
       <Televesion />

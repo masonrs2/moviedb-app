@@ -2,9 +2,10 @@
 import React, { use } from 'react'
 import Image from 'next/image'
 import ShowCard from './ShowCard'
+import Link from 'next/link'
 
 async function fetchTvShows() {
-    const res = await fetch(`https://api.themoviedb.org/3/tv/airing_today?api_key=6259a38ecc880ab73db793a33df58313&language=en-US&page=1`)
+    const res = await fetch(`    https://api.themoviedb.org/3/tv/popular?api_key=6259a38ecc880ab73db793a33df58313&language=en-US&page=1`)
     const data = await res.json()
 
     return data.results;
@@ -24,18 +25,20 @@ const Televesion = () => {
                 {
                     shows.map((show, index) => (
                         <div className="flex flex-col px-4 gap-2 hover:scale-105 duration-300 cursor-pointer py-4 " key={show.title} >
-                            <div className="w-[160px] sm:w-[200px] md:w-[240px] lg:w-[280px] inline-block mx-2 ">
-                                <Image 
-                                    src={`https://image.tmdb.org/t/p/original/${show?.backdrop_path}`} 
-                                    className=" w-full object-cover rounded-lg"
-                                    width={300}
-                                    height={150}
-                                    alt={show?.title}
-                                /> 
+                            <Link href={`/shows/${show.id}`}>
+                                <div className="w-[160px] sm:w-[200px] md:w-[240px] lg:w-[280px] inline-block mx-2 ">
+                                    <Image 
+                                        src={`https://image.tmdb.org/t/p/original/${show?.backdrop_path}`} 
+                                        className=" w-full object-cover rounded-lg"
+                                        width={300}
+                                        height={150}
+                                        alt={show?.title}
+                                    /> 
 
-                                <h2 className="text-white text-sm md:text-lg font-medium mt-3 w-full items-center flex justify-center ">{show?.name}</h2>
-                                <h3 className="text-white text-xs md:text-sm font-light mt-1 w-full items-center flex justify-center ">First Air Date: {show?.first_air_date}</h3>
-                            </div>
+                                    <h2 className="text-white text-sm md:text-lg font-medium mt-3 w-full items-center flex justify-center ">{show?.name}</h2>
+                                    <h3 className="text-white text-xs md:text-sm font-light mt-1 w-full items-center flex justify-center ">First Air Date: {show?.first_air_date}</h3>
+                                </div>
+                            </Link>
                         </div>
                     ))
                 }

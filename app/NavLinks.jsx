@@ -8,7 +8,7 @@ const NavLinks = () => {
         <ul className="flex gap-4 lg:gap-8 lg:text-lg">
             {
                 navItems.map((item, index) => (
-                    <li key={index} className="font-light text-gray-300 cursor-pointer hover:scale-105 duration-300 hover:text-gray-400">
+                    <li key={item.id} className="font-light text-gray-300 cursor-pointer hover:scale-105 duration-300 hover:text-gray-400">
                       <Link href={item.href}>
                          {item.content}
                         </Link>

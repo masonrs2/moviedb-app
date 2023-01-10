@@ -11,6 +11,7 @@ const Navbar = () => {
     const [toggleNav, setToggleNav] = useState(false)
     const [isAuthenticated, setIsAuthenticated] = useState(false)
     const [userId, setUserId] = useState()
+    const [user, setUser] = useState()
     useEffect(() => {
         const getUser = async () => {
             const user = await supabase.auth.getUser()
@@ -18,8 +19,10 @@ const Navbar = () => {
                 setIsAuthenticated(user)
                 const userId = user.data.user?.id
                 setUserId(userId)
+                setUser(user)
             }
-            console.log("user: ", user)
+            console.log("email: ", user.data.user.email)
+
         }
 
         getUser()
@@ -48,7 +51,13 @@ const Navbar = () => {
         
                     <div className="flex flex-row gap-3 pr-3">  
                             <Link href={`/Login`} className="flex items-center">
-                                <button className="flex justify-center items-center gap-2 p-2 w-[105px text-gray-200 font-light "><AiOutlineUser size={23}  /> Sign In</button>
+                                {
+                                    isAuthenticated ? 
+                                    <button className="flex justify-center items-center gap-2 p-2 w-[105px text-gray-200 font-light "><AiOutlineUser size={23}  />{user.data?.user?.email.split("@")[0]}</button>
+                                    : 
+                                    <button className="flex justify-center items-center gap-2 p-2 w-[105px text-gray-200 font-light "><AiOutlineUser size={23}  /> Sign In</button> 
+                                }
+                                
                             </Link>                    
                             <Link href="/Signup">
                                 <div className=" rounded-xl w-full bg-gradient-to-r p-[5px] from-emerald-300 to-teal-600">

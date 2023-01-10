@@ -53,7 +53,7 @@ const Navbar = () => {
                             <Link href={`/Login`} className="flex items-center">
                                 {
                                     isAuthenticated ? 
-                                    <button className="flex justify-center items-center gap-2 p-2 w-[105px text-gray-200 font-light "><AiOutlineUser size={23}  />{user.data?.user?.email.split("@")[0]}</button>
+                                    <button className="flex justify-center items-center gap-2 p-2 w-[105px text-gray-200 font-light "><AiOutlineUser size={23}  />{user ? user.data?.user?.email.split("@")[0] : "Sign In"}</button>
                                     : 
                                     <button className="flex justify-center items-center gap-2 p-2 w-[105px text-gray-200 font-light "><AiOutlineUser size={23}  /> Sign In</button> 
                                 }

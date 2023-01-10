@@ -48,7 +48,6 @@ const page = async ({ params }) => {
 
                     <div className="flex flex-col relative bottom-5">
                         
-
                         <h1 className="text-white text-3xl md:text-5xl font-bold mb-2">
                             {movie?.title}
                         <span className="text-gray-300 text-3xl md:text-5xl font-light"> ({movie?.release_date.split('-')[0]})</span>

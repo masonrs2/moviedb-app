@@ -21,7 +21,7 @@ const Navbar = () => {
                 setUserId(userId)
                 setUser(user)
             }
-            console.log("email: ", user.data.user.email)
+            console.log("email: ", user.data?.user?.email)
 
         }
 

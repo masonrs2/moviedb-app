@@ -7,7 +7,8 @@ import Link from 'next/link'
 async function fetchPopularMovies() {
 
   const apiKey = '6259a38ecc880ab73db793a33df58313'
-  const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=horror&page=1&include_adult=false`
+  // const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=horror&page=1&include_adult=false`
+  const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language=en-US&page=1`
 
   const res = await fetch(url)
   const data = await res.json()
@@ -27,7 +28,7 @@ const PopularMovies = () => {
     <div className=" px-10 xl:px-32 py-4">
        <div className="flex flex-col">
           <h1 className="text-black font-medium text-2xl mb-3">
-              Horror Movies
+              Now Playing
           </h1>
 
           <div className="flex gap-4 w-full overflow-x-scroll scroll-smooth scrollbar-hide ">

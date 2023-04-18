@@ -37,17 +37,18 @@ const PopularMovies = () => {
 
   return (
     <div className=" px-10 xl:px-32 pt-8 pb-4">
-       <div className="flex flex-col">
+       <div className="flex flex-col ">
           <h1 className="text-black font-medium text-2xl mb-3">
               Top Rated Movies
           </h1>
 
           <div id={'slider1'} className="flex gap-4 relative w-full overflow-x-scroll scroll-smooth scrollbar-hide group ">
+          
               {
                 movies.map((movie, index) => (
-                  <div key={index} className="hover:bg-gray-300/30 hover:border border px-6 pt-6 active:bg-gray-300/50 hover:border-gray-500/30 cursor-pointer rounded-lg" >
+                  <div key={index} className="carousel-item hover:bg-gray-300/30 hover:border border px-6 pt-6 active:bg-gray-300/50 hover:border-gray-500/30 cursor-pointer rounded-lg" >
                     <Link href={`/movies/${movie.id}`}>
-                      <div className="flex flex-col rounded-lg w-40 group relative">
+                      <div className="flex flex-col rounded-lg w-40 group relative ">
                         <div>
 
                           <img 

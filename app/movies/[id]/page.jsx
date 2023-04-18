@@ -71,9 +71,9 @@ const page = async ({ params }) => {
                         </div>
                         <p className="text-gray-400 font-light italic text-lg my-1">{movie?.tagline}</p>
                         <div className="flex items-center gap-2">
-                            <div className="bg-gradient-to-r rounded-full from-emerald-300 via-black to-teal-600 w-[63px] h-[63px] items-center flex justify-center ">
-                            <div className="rounded-full w-14 h-14 font-bold items-center flex justify-center text-gray-500 bg-gray-900 rotate-[-17deg]">{movie?.vote_average?.toFixed(1)}/10</div>
-                            </div>
+                            {/* <div className="bg-gradient-to-r rounded-full from-emerald-300 via-black to-teal-600 w-[63px] h-[63px] items-center flex justify-center "> */}
+                            <div className="radial-progress bg-blue-900  text-gray-400 " style={{"--value":movie?.vote_average?.toFixed(1)*10}}>{movie?.vote_average?.toFixed(1)}/10</div>
+                            {/* </div> */}
                             <div className="flex-col text-gray-400 font-medium">
                                 <p>User</p>
                                 <p>Score</p>
